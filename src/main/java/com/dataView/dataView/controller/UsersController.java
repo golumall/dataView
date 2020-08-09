@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-@RequestMapping(value = "/users/")
+@RequestMapping(value = "/users")
 public class UsersController {
     private final static Logger logger = LogManager.getLogger(UsersController.class);
 
     @Autowired
     UsersService usersService;
 
-    @RequestMapping(value = "userLogin",method = RequestMethod.POST)
+    @RequestMapping(value = "/userLogin",method = RequestMethod.POST)
     public String userLogin(@RequestBody final UserLogin userLogin)
     {
             logger.info("Login Initiated for user: "+userLogin.getUser_name());
