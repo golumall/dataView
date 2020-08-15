@@ -1,13 +1,14 @@
 package com.dataView.dataView.validator;
-
-import com.dataView.dataView.model.TextUrl;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class TextUrlValidator {
 
-    public boolean validateUrlRequest(TextUrl request)
+    public boolean validateUrlRequest(String request)
     {
-        if(urlValidator(request.getTextUrl()))
+        if(urlValidator(request))
             return true;
         return false;
     }

@@ -2,6 +2,7 @@ package com.dataView.dataView.controller;
 
 import com.dataView.dataView.model.TextUrl;
 import com.dataView.dataView.model.UserLogin;
+import com.dataView.dataView.service.TextUrlResponseService;
 import com.dataView.dataView.service.UsersService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -16,6 +17,8 @@ public class UsersController {
 
     @Autowired
     UsersService usersService;
+    @Autowired
+    TextUrlResponseService textUrlResponseService;
 
     @RequestMapping(value = "/userLogin",method = RequestMethod.POST)
     public @ResponseBody String userLogin(@RequestBody UserLogin userLogin)
@@ -24,9 +27,10 @@ public class UsersController {
             return usersService.verifyUserLogin(userLogin.getUser_name(), userLogin.getPassword());
     }
 
+    @RequestMapping(value = "/textUrl",method = RequestMethod.POST)
     public @ResponseBody  String textUrlResponse(@RequestBody TextUrl textUrl)
     {
-       return "";
+       return textUrlResponseService.calculateResponseOnTextUrl(textUrl.getTextUrl());
     }
 
 }
