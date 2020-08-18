@@ -17,6 +17,7 @@ public class UsersController {
 
     @Autowired
     UsersService usersService;
+
     @Autowired
     TextUrlResponseService textUrlResponseService;
 
@@ -28,7 +29,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/textUrl",method = RequestMethod.POST)
-    public @ResponseBody  String textUrlResponse(@RequestBody TextUrl textUrl)
+    public @ResponseBody  String textUrlResponse(@RequestBody TextUrl textUrl) throws Exception
     {
        return textUrlResponseService.calculateResponseOnTextUrl(textUrl.getTextUrl());
     }
